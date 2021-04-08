@@ -22,14 +22,19 @@ namespace WOBH
 
             for (int i = 0; i < amount; i++)
             {
-                var stone = spawner.Spawn();
-                stone.transform.position = poinst[i].position;
-                list.Add(stone);
+                var bush = spawner.Spawn();
+                bush.transform.position = poinst[i].position;
+                bush.gameObject.SetActive(true);
+                list.Add(bush);
             }
 
             return list;
         }
-        internal void Recycle(Transform stone) => spawner.Recycle(stone);
+        internal void Recycle(Transform bursh)
+        {
+            bursh.gameObject.SetActive(false);
+            spawner.Recycle(bursh);
+        }
 
         private void Awake()
         {

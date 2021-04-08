@@ -13,7 +13,11 @@ namespace WOBH
 
         Spawner<Ammunition> spawner;
 
-        public void Recycle(Ammunition ammunition) => spawner.Recycle(ammunition);
+        public void Recycle(Ammunition ammunition)
+        {
+            ammunition.gameObject.SetActive(false);
+            spawner.Recycle(ammunition);
+        }
 
         public List<Ammunition> Spawn(int amount)
         {

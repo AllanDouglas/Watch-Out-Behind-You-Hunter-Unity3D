@@ -24,12 +24,17 @@ namespace WOBH
             {
                 var stone = spawner.Spawn();
                 stone.transform.position = poinst[i].position;
+                stone.gameObject.SetActive(true);
                 list.Add(stone);
             }
 
             return list;
         }
-        internal void Recycle(Transform stone) => spawner.Recycle(stone);
+        internal void Recycle(Transform stone)
+        {
+            stone.gameObject.SetActive(false);
+            spawner.Recycle(stone);
+        }
 
         private void Awake()
         {
